@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <!-- Initializes the document and tells the browser to render it as a webpage -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PH Revision</title>
+        <link rel="stylesheet" href="styles.css">  
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    </head>
+    <body>
+        <section class="header" id="header">
+            <nav>
+                <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
+    
+     <!-- HTML for Menu Icon and Close Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <div id="navLinks" class="nav-links">
+            <span class="close-icon" onclick="hideMenu()">&#10005;</span>
+    <!-- Your menu content here -->
+</div>
+
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Log in / Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+    
+        <div class="text-box1">
+            <h1>Welcome</h1>
+            <br>
+            <p>Revision Resources for A Level Psychology and History</p>
+            <br>
+            <p>Flash Cards and Summary Notes</p>
+            <br>
+            <a href="" class="hero-btn">HOME</a>
+        </div>
+       <!--About Section -->
+       <section id "about" class ="about-section">
+        <div class = "text-box2">
+            <h1>About</h1>
+            <p>Revising for A level Psychology and History has never been easier</p>
+            <br>
+            <p>Find resources for AQA Psychology and OCR History.</p>
+            <p> Excellence at your fingertips</p>
+            <p>Make your free account today!</p>
+            <br>
+            <br>
+            <div class ="nav-buttons">
+                <a href="" class="hero-btn1">Flashcards</a>
+                <a href="" class="hero-btn2">Notes</a>
+                <a href="" class="hero-btn3">Quizzes</a>
+            </div>
+        </div>
+       </section>
+       // Function to show the menu only on mobile
+       function toggleMenu() {
+           const navLinks = document.getElementById("navLinks");
+           const isMobile = window.innerWidth <= 700;
+       
+           if (isMobile) {
+               navLinks.style.right = navLinks.style.right === "0px" ? "-200px" : "0";
+           }
+       }
+    <script>
+       // Function to hide the menu
+       function hideMenu() {
+           document.getElementById("navLinks").style.right = "-200px";
+       }
+       
+       // Update menu display if screen resizes
+       window.addEventListener("resize", () => {
+           const navLinks = document.getElementById("navLinks");
+           if (window.innerWidth > 700) {
+               navLinks.style.right = "-200px"; // Ensure it's hidden on larger screens
+           }
+       });
+       </script>
+    </body>
+    </html>
+    
