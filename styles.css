@@ -15,7 +15,7 @@ html, body {
 
 /* Header */
 #header {
-    height: 100vh;
+    height: 0vh;
     background-position: center;
     background-size: cover;
     position: relative;
