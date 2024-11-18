@@ -13,6 +13,8 @@
     <body>
         <section class="header" id="header">
             <nav>
+                <!--Link to Login Page-->
+                <!--<a href="login.html"  class="login-link">Login</a>-->
                 <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
             <!-- HTML for Menu Icon and Close Icon -->
             <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
@@ -20,12 +22,13 @@
                 <span class="close-icon" onclick="hideMenu()">&#10005;</span>
                 <ul>
                     <li><a href="">Home</a></li>
-                    <li><a href="">Log in / Sign Up</a></li>
+                    <li><a href="login.html">Log in / Sign Up</a></li>
+                    <li><a href="">About</a></li>
                 </ul>
                 </div>
             </nav>
         </section>
-    
+    <!--The main body of text for the website-->
         <div class="text-box1">
             <h1>Welcome</h1>
             <br>
@@ -53,8 +56,7 @@
             </div>
         </div>
        </section>
-<<<<<<< HEAD
-       
+       <!--Javascript for Toggle Menu-->
     <script>
         //Function to show the menu only on mobile
         function toggleMenu() {
@@ -65,18 +67,6 @@
                 navLinks.style.right = navLinks.style.right === "0px" ? "-200px" : "0";
             }
         }
-=======
-    <script>
-        // Function to show the menu only on mobile
-       function toggleMenu() {
-           const navLinks = document.getElementById("navLinks");
-           const isMobile = window.innerWidth <= 700;
-       
-           if (isMobile) {
-               navLinks.style.right = navLinks.style.right === "0px" ? "-200px" : "0";
-           }
-       }
->>>>>>> 044ad01a397802ee2e7260a4ed58fe4875dfe561
        // Function to hide the menu
        function hideMenu() {
            document.getElementById("navLinks").style.right = "-200px";

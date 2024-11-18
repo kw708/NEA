@@ -7,7 +7,7 @@
     font-weight: 300;
     font-style: normal;
 }
-
+/*Background of the entire website is initialised*/
 html, body {
     height: 100%;
     background-color: rgba(0, 150, 255, 1);
@@ -15,7 +15,7 @@ html, body {
 
 /* Header */
 #header {
-    height: 0vh;
+    height: 30vh;
     background-position: center;
     background-size: cover;
     position: relative;
@@ -95,7 +95,7 @@ nav img {
 }
 .nav-links ul li::after{
     content: '';
-    width:100%;
+    width:0%;
     height:2px;
     background: #dcf1f3;
     display:block;
@@ -182,10 +182,23 @@ p {
 
 /* Show the sidebar only on mobile */
 @media (max-width: 700px) {
-    .nav-links {
-        right: -200px; /* Default hidden */
-        transition: right 0.3s ease;
+    .text-box1{
+        font-size: 20px;
     }
+    .nav-links ul li {
+        display: block;
+    }
+    .nav-links {
+        position:absolute;
+        background:#dcf1f3;
+        height: 100vh;
+        width:200px;
+        top:0;
+        right:0;
+        text-align: left;
+        z-index:2;
+        right: -200px; /* Default hidden */
+        transition: right 0.3s ease; 
 }
 
 
@@ -195,8 +208,7 @@ p {
     background-color: rgba(0, 150, 255, 1);
     text-align: center;
 }
-
-.text-box2 {
+/*.text-box2 {
     max-width: 600px;
     margin: 0 auto;
     color: #333;
@@ -210,5 +222,23 @@ p {
 
 .text-box2 p {
     font-size: 1.2rem;
+    margin: 10px 0;8*/
+}
+.text-box2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 20px;
+}
+h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+p {
+    font-size: 2rem;
     margin: 10px 0;
 }
