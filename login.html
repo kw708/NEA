@@ -1,3 +1,4 @@
+<!-- Html document for the login and sign up-->
 <!DOCTYPE html> 
 <html>
 <head>
@@ -8,10 +9,12 @@
 
  </head>
  <body> 
+    <!---this creates a box for the area-->
  <div class = "container">
     <div class="form-box">
         <h1 id="title">Sign Up</h1>
         <form>
+            <!--This creates separate boxes for the name, email, password and includes the icons-->
             <div class="input-group"> 
                 <div class="input-field" id="nameField">
                     <i class="fa-regular fa-user"></i>
@@ -28,6 +31,7 @@
                     </div>
                     <p> Lost Password <a href="#"> Click Here!</a></p>
             </div>
+            <!--This creates buttons for the user toc move between login and sign up-->
             <div class="btn-field">
                 <button type = "button" id="signupBtn">Sign Up</button>
                 <button type = "button"id="loginBtn" class="disable">Login</button>
@@ -37,6 +41,7 @@
 
             
  </div>
+ <!--This java script adds functionality to the area and gets rid of name when logging in-->
  <script>
 let signupBtn = document.getElementById("signupBtn");
 let loginBtn = document.getElementById("loginBtn");
@@ -48,6 +53,7 @@ loginBtn.onclick = function(){
     title.innerHTML = "Login";
     signupBtn.classList.add("disable");
     loginBtn.classList.remove("disable");
+    // this allows there to be a difference when the user moves between login and sign up//
 }
 signupBtn.onclick = function(){
     nameField.style.maxHeight = "60px";
