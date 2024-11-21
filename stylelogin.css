@@ -5,7 +5,16 @@
     font-family: "IBM Plex Serif", serif;
     box-sizing: border-box;
 }
-
+nav img {
+    display: block; 
+    width: 200px;
+    height: 200px;
+}
+@media (max-width: 768px) {
+    .nav img {
+      width: 15%;
+    }
+}
 /*the conatiner created in the html doc is given attributes*/
 .container{
     width: 100%;
