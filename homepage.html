@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!---This is for initialising the page with the same features as the  rest of the website-->
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
@@ -9,9 +10,11 @@
     <nav>
       <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
   </nav>
+  <!---This creates the 2 subjects tabs for the user to shoose from-->
     <h1>Courses</h1>
     <br>
     <body>
+        <!--- The containers are populated with tittles and icons-->
       <div class = "container">
         <div class ="box">
           <h3> Psychology</h3>
@@ -21,7 +24,26 @@
           <h3> History</h3>
           <div class = "icon"><i class="fa-solid fa-book"></i></div>
         </div>
-        </h3>
+        <!-- This section class creates a task bar in the right hand corner of the screen including the profile and settings touchpoints-->
+        <section class = "header">
+            <div class = "icon-container">
+                <i class="fa-regular fa-user"></i>
+               <!-----<p href = "profile.html">Profile</p> -->
+                <a href = "profile.html">
+                  <p>Profile </p>
+                </a>
+            </div>
+
+            <div class="icon-container">
+                <i class="fa-solid fa-gear"></i>
+                <p>Settings</p>
+            </div>
+
+            <div class="icon-container">
+                <i class="fa-solid fa-bullseye"></i>
+                <p>Daily Target</p>
+            </div>
+        </section>
       </div>
     </body>
   </html>
