@@ -1,0 +1,43 @@
+/*This creates the main style of the website*/
+body{
+    margin:0;
+    padding:0;
+    font-family: "IBM Plex Serif", serif;
+    background-color: rgba( 0, 150 ,255 ,1 );
+}
+/*This places the website logo in the same place as the other pages*/
+nav img {
+    display: block; 
+    width: 200px;
+    height: 200px;
+}
+  @media (max-width: 768px) {
+    .nav img {
+      width: 15%;
+    }
+}
+
+  
+  /* .header-container is correctly centered with flexbox */
+  .header-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+  
+ button{
+    padding : 10px 20px;
+     background-color: #007BFF;
+      color: #fff;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+       margin-top: 10px;
+}
+    
+button:hover {
+        background-color: #0056b3; 
+}
+
+  

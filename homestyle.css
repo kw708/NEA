@@ -16,6 +16,21 @@ nav img {
       width: 15%;
     }
 }
+
+button{
+    padding : 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
 /*This stylises the courses header and places it in the middle of the web page*/
 h1{
     font-size: 64px;

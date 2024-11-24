@@ -9,6 +9,7 @@
     </head>
     <nav>
       <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
+      <button onclick ="goHome()">Back to Home</button>
   </nav>
   <!---This creates the 2 subjects tabs for the user to shoose from-->
     <h1>Courses</h1>
@@ -16,7 +17,7 @@
     <body>
         <!--- The containers are populated with tittles and icons-->
       <div class = "container">
-        <div class ="box">
+        <div class ="box" onclick="goToPsychology()">
           <h3> Psychology</h3>
         <div class="icon"><i class="fa-solid fa-brain"></i></div>
         </div>
@@ -45,6 +46,12 @@
             </div>
         </section>
       </div>
+      <script src = "script.js"></script>
+      <script>
+      function goToPsychology() {
+        window.location.href = "psychology.html";
+      }
+      </script>
     </body>
   </html>
     </head>
