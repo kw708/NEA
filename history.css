@@ -1,1 +1,124 @@
- 
+ /*This creates the main style of the website*/
+body{
+    margin:0;
+    padding:0;
+    font-family: "IBM Plex Serif", serif;
+    background-color: rgba( 0, 150 ,255 ,1 );
+}
+/*This places the website logo in the same place as the other pages*/
+nav img {
+    display: block; 
+    width: 200px;
+    height: 200px;
+}
+  @media (max-width: 768px) {
+    .nav img {
+      width: 15%;
+    }
+}
+
+.header-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+h1{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+
+}
+
+p  {
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+button{
+    padding : 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+
+.search-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.search-bar{
+    background: #fff;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    padding: 2px;
+    border-radius: 4px;
+    position: relative;
+}
+
+#select{
+    background: azure;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:#000;
+    width: 300px;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 4px;
+    max-height: 50px;
+    overflow: hidden;
+    transition: max-height  0.5s ease ;
+}
+
+#select i{
+    width: 15px;
+}
+
+#select ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    background: aliceblue;
+    color: #000;
+    width:100%;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    max-height: 0;
+    transition: max-height 0.5s ease; 
+}
+
+#select ul li {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.search-bar input{
+    padding: 10px 25px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+}
+#select ul.open{
+    max-height: 300px;
+}

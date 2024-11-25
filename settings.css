@@ -1,0 +1,103 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: "IBM Plex Serif", serif;
+    background-color: rgba( 0, 150 ,255 ,1 );
+}
+/*This places the website logo in the same place as the other pages*/
+nav img {
+    display: block; 
+    width: 200px;
+    height: 200px;
+}
+  @media (max-width: 768px) {
+    .nav img {
+      width: 15%;
+    }
+}
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.icon-container {
+    text-align: center;
+}
+
+.icon-container i {
+    font-size: 50px;
+}
+
+.font-size-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#font-slider {
+    width: 200px;
+}
+
+.theme-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: #007acc;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider:before {
+    transform: translateX(25px);
+}
+
+.notification-container {
+    text-align: center;
+}
+
+.notification-container i {
+    margin-right: 10px;
+}

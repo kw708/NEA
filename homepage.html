@@ -8,8 +8,8 @@
         <script src="https://kit.fontawesome.com/2cdfb815df.js" crossorigin="anonymous"></script>
     </head>
     <nav>
-      <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
-      <button onclick ="goHome()">Back to Home</button>
+      <a href=""><img src="images/logo transparent.png" alt="Logo"></a>
+      <button onclick ="goToindex()">Back to Home</button>
   </nav>
   <!---This creates the 2 subjects tabs for the user to shoose from-->
     <h1>Courses</h1>
@@ -21,9 +21,10 @@
           <h3> Psychology</h3>
         <div class="icon"><i class="fa-solid fa-brain"></i></div>
         </div>
-        <div class ="box">
+        <div class ="box" onclick="goToHistory()">
           <h3> History</h3>
           <div class = "icon"><i class="fa-solid fa-book"></i></div>
+        </div>
         </div>
         <!-- This section class creates a task bar in the right hand corner of the screen including the profile and settings touchpoints-->
         <section class = "header">
@@ -37,19 +38,28 @@
 
             <div class="icon-container">
                 <i class="fa-solid fa-gear"></i>
-                <p>Settings</p>
+                <a href = "settings.html">
+                  <p>Settings</p>
+                </a>
+               
             </div>
 
             <div class="icon-container">
-                <i class="fa-solid fa-bullseye"></i>
-                <p>Daily Target</p>
+                <i class="fa-solid fa-pen-to-square"></i>
+                <p>Revision Tools</p>
             </div>
         </section>
       </div>
       <script src = "script.js"></script>
       <script>
+        function goToindex(){
+          window.location.href = "index.html";
+        }
       function goToPsychology() {
         window.location.href = "psychology.html";
+      }
+      function goToHistory(){
+        window.location.href = "history.html";
       }
       </script>
     </body>
