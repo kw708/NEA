@@ -10,6 +10,7 @@
     <body>
         <nav>
     <a href=""><img src="images/logo transparent.png" alt="Logo"></a>
+    <button onclick ="goToProfile()">Back to Profile</button>
         </nav>
         <div class ="settings-container">
             <div class = "icon-container">
@@ -30,7 +31,8 @@
             </div>
             <div class = "notification-container">
                 <label>
-                    <i class="fa-regular fa-bell">Turn Off Notifations and reminders</i>
+                    <i class="fa-regular fa-bell"></i>
+                    <p>Turn Off Notifations and reminders</p>
                 </label>
             </div>
         </div>
@@ -41,6 +43,9 @@
 
 
         <script>
+            function goToProfile() {
+        window.location.href = "goToProfile";
+    }
             const fontslider = document.getElementById("fontslider");
             const fontvalue = document.getElementById("fontvalue");
 
