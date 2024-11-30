@@ -15,6 +15,21 @@ nav img {
       width: 15%;
     }
 }
+/* style for the buttton , the same like other pages*/
+button{
+    padding : 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
 /*the conatiner created in the html doc is given attributes*/
 .container{
     width: 100%;

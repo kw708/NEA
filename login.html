@@ -15,6 +15,7 @@
     <nav>
         <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
     </nav> 
+    <button onclick ="goToindex()">Back to Home</button>
     <div class="form-box">
         <h1 id="title">Sign Up</h1>
         <form>
@@ -65,6 +66,10 @@ signupBtn.onclick = function(){
     signupBtn.classList.remove("disable");
     loginBtn.classList.add("disable");
 }
+
+function goToindex(){
+          window.location.href = "index.html";
+        }
 
 
 

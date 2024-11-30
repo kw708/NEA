@@ -14,6 +14,7 @@ nav img {
       width: 15%;
     }
 }
+/*This for the profile icon and name.*/
 .profile{
     display: flex;
     flex-direction: column;
@@ -25,12 +26,14 @@ nav img {
     font-size: 50px;
 
 }
+
 h1{
     font-size: 30px;
     font-weight: bold;
     color: black;
     margin-bottom: 20px;
 }
+/*This for the back to course page*/
 button{
     padding : 10px 20px;
     background-color: #007BFF;
@@ -44,6 +47,8 @@ button{
 button:hover {
     background-color: #0056b3; 
 }
+
+/*The container to hold the boxes*/
 .container{
     display: flex;
     justify-content: space-evenly;
@@ -53,6 +58,7 @@ button:hover {
     gap: 5px;
     height: 100vh;
 }
+/*styling for the boxes */
 .box{
     position: relative;
     width: 300px;
@@ -88,6 +94,7 @@ button:hover {
     font-weight: bold;
 } */
 
+/*For the icons for in the boxes*/
 .notes-section {
     display: flex;
     flex-direction: row;

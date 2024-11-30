@@ -10,20 +10,21 @@
     <body>
         <nav>
             <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
-            <button onclick ="goHome()">Back to Home</button>
+            <button onclick ="goToCourses()">Back to Courses</button>
         </nav>
-
+<!-- Header detailing the subject and the specification available-->
         <div class = "header-container">
             <h1>Psychology</h1>
             <p> Specification - AQA </p>
         </div>
-
+<!--search bar -->
         <div class ="search-container">
             <div class = "search-bar">
                 <div id = "select">
                     <p> All Topics</p>
                     <i class="fa-solid fa-caret-down"></i>
                     <ul  id="list">
+                        <!-- options for the user to choose from -->
                         <li class ="options">All Topics</li>
                         <li class ="options">Recent</li>
                         <li class ="options">Popular</li>
@@ -32,7 +33,7 @@
                 <input type = "text" placeholder="Enter a Topic">
             </div>
         </div>
-
+<!--Java to allow the user to filter -->
     <script>
         let select = document.getElementById("select");
         let list = document.getElementById("list");
@@ -41,8 +42,8 @@
             list.classList.toggle("open");
         }
 
-        function goHome(){
-            window.location.href = "homepage.html";
+        function goToCourses(){
+            window.location.href = "courses.html";
         }
     </script>
     

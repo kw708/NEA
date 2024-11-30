@@ -14,7 +14,7 @@ nav img {
     height: 200px;
 }
   @media (max-width: 768px) { 
-    .nav img {
+     .nav img {
         width: 15%;
     }
 }
@@ -32,6 +32,7 @@ nav img {
     min-height:100vh;
     padding: 10px;
     align-items: left;
+    display: flex;
 }
 
 .todo-app{ 
@@ -140,6 +141,7 @@ ul li span:hover{
     box-sizing: border-box;
 }
 
+/*Timer*/
 .container2{
     background-color: rgba( 0, 150 ,255 ,1 ); 
     width: 40%;
@@ -151,6 +153,8 @@ ul li span:hover{
     box-shadow: 0 0 20px black ;
     position: relative;
 }
+
+
 
 .timer-display{
     position: relative;

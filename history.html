@@ -10,14 +10,14 @@
     <body>
         <nav>
             <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
-            <button onclick ="goHome()">Back to Home</button>
+            <button onclick ="goToCourses()">Back to courses</button>
         </nav>
-
+<!-- Header detailing the subject and the specification available-->
         <div class = "header-container">
             <h1>History</h1>
             <p> Specification - OCR </p>
         </div>
-
+<!--search bar -->
         <div class ="search-container">
             <div class = "search-bar">
                 <div id = "select">
@@ -32,7 +32,7 @@
                 <input type = "text" placeholder="Enter a Topic">
             </div>
         </div>
-
+<!--Java to allow the user to filter -->
     <script>
         let select = document.getElementById("select");
         let list = document.getElementById("list");
@@ -40,8 +40,8 @@
         select.onclick = function(){
             list.classList.toggle("open");
         }
-        function goHome(){
-            window.location.href = "homepage.html";
+        function goToCourses(){
+            window.location.href = "Courses.html";
         }
     </script>
     

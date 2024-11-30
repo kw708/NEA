@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <!---This is for initialising the page with the same features as the  rest of the website-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel = "stylesheet" href ="courses.css">
+        <script src="https://kit.fontawesome.com/2cdfb815df.js" crossorigin="anonymous"></script>
+    </head>
+    <nav>
+      <a href=""><img src="images/logo transparent.png" alt="Logo"></a>
+      <button onclick ="goToindex()">Back to Home</button>
+  </nav>
+  <!---This creates the 2 subjects tabs for the user to choose from-->
+    <h1>Courses</h1>
+    <br>
+    <body>
+        <!--- The containers are populated with titles and icons-->
+      <div class = "container">
+        <div class ="box" onclick="goToPsychology()">
+          <h3> Psychology</h3>
+        <div class="icon"><i class="fa-solid fa-brain"></i></div>
+        </div>
+        <div class ="box" onclick="goToHistory()">
+          <h3> History</h3>
+          <div class = "icon"><i class="fa-solid fa-book"></i></div>
+        </div>
+        </div>
+        <!-- This section class creates a task bar in the right hand corner of the screen including the profile and settings touchpoints-->
+        <section class = "header">
+            <div class = "icon-container">
+                <i class="fa-regular fa-user"></i>
+               <!-----<p href = "profile.html">Profile</p> -->
+                <a href = "profile.html">
+                  <p>Profile </p>
+                </a>
+            </div>
+<!--settings touchpoint-->
+            <div class="icon-container">
+                <i class="fa-solid fa-gear"></i>
+                <a href = "settings.html">
+                  <p>Settings</p>
+                </a>
+               
+            </div>
+<!--- The revision tools touchpoint-->
+            <div class="icon-container">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <a href  = "revisiontools.html">
+                  <p>Revision Tools</p>
+                </a>
+            </div>
+        </section>
+      </div>
+      <script src = "script.js"></script>
+      <script>
+        function goToindex(){
+          window.location.href = "index.html";
+        }
+      function goToPsychology() {
+        window.location.href = "psychology.html";
+      }
+      function goToHistory(){
+        window.location.href = "history.html";
+      }
+      </script>
+    </body>
+  </html>
+    </head>
+</html>
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

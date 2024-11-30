@@ -11,11 +11,13 @@
 </nav>
 <br>
 <body> 
+    <!-- The profile and Icon-->
     <div class = "profile">
         <i class="fa-solid fa-user"></i>
        <h1>Kemi</h1>
-       <button onclick ="goHome()">Back to Home</button>
+       <button onclick ="goToCourses()">Back to Courses</button>
     </div>
+    <!-- The target and notes boxes-->
     <div class = "container">
         <div class = "box">
             <h3>Targets</h3>
@@ -24,6 +26,7 @@
             <div class ="icon2"> 
             <i class="fa-solid fa-bullseye"></i>Weekly Target</div>
         </div>
+        <!-- notes box -->
         <div class = "box">
             <h3>Notes</h3>
             <div class = "notes-section">
@@ -35,10 +38,11 @@
         
         </div>
     </div>
+    <!--- The java for going back the courses page-->
     <script src = "script.js"></script>
     <script>
-    function goHome() {
-        window.location.href = "homepage.html";
+    function goToCourses() {
+        window.location.href = "courses.html";
     }
     </script>
 </body>

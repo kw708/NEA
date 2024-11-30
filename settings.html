@@ -10,18 +10,21 @@
     <body>
         <nav>
     <a href=""><img src="images/logo transparent.png" alt="Logo"></a>
-    <button onclick ="goToProfile()">Back to Profile</button>
+    <button onclick ="goToCourses()">Back to Courses</button>
         </nav>
+        <!-- individual settings -->
         <div class ="settings-container">
             <div class = "icon-container">
                 <i class="fa-solid fa-gear"></i>
                 <p> Settings</p>
             </div>
+            <!-- font sizer toggle -->
             <div class = "font-size-container">
                 <label for = "fontslider">Increase Font Size</label>
                 <input type = "range" id = "font-slider" min="10" max="50" value="33">
                
             </div>
+            <!-- colour scheme-->
             <div class = "theme-container">
                 <label> Dark / Light Mode </label>
                 <div class ="toggle-switch">
@@ -29,6 +32,7 @@
                     <span class = "slider"></span>
                 </div>
             </div>
+            <!-- notifications and reminders-->
             <div class = "notification-container">
                 <label>
                     <i class="fa-regular fa-bell"></i>
@@ -41,10 +45,10 @@
 
 
 
-
+<!-- Java for the toggle -->
         <script>
-            function goToProfile() {
-        window.location.href = "goToProfile";
+            function goToCourses() {
+        window.location.href = "profile.html";
     }
             const fontslider = document.getElementById("fontslider");
             const fontvalue = document.getElementById("fontvalue");
@@ -53,7 +57,7 @@
             fontslider.addEventListener('input',() => {
                 fontValue.textContent = `${fontSlider.value}%`; document.body.style.fontSize = `${fontSlider.value}px`;
             })
-
+//theme toggle 
 
             const themeToggle = document.getElementById('theme-toggle');
             themeToggle.addEventListener('change', () => {

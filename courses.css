@@ -1,0 +1,138 @@
+
+/*This creates the main style of the website*/
+body{
+    margin:0;
+    padding:0;
+    font-family: "IBM Plex Serif", serif;
+    background-color: rgba( 0, 150 ,255 ,1 );
+}
+/*This places the website logo in the same place as the other pages*/
+nav img {
+    display: block; 
+    width: 200px;
+    height: 200px;
+}
+  @media (max-width: 768px) {
+    .nav img {
+      width: 15%;
+    }
+}
+
+button{
+    padding : 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+/*This stylises the courses header and places it in the middle of the web page*/
+h1{
+    font-size: 64px;
+    font-weight: bold;
+    text-align:center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+    color: black;
+    margin: 0;
+}
+/*This stylises the containers and places them evenly in the middle of the screen*/
+  
+.container {
+    display:flex;
+    justify-content: space-evenly;
+    flex-direction:row;
+    align-items: center;
+    margin: 50px auto;
+    height: 100vh;
+}
+ /*This stylises the individual boxes of on the page */
+.box{
+    position:relative;
+    width: 300px;
+    height: 200px;
+    background-color: aliceblue;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.icon{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+  
+.content h3{
+    font-size: 24px;
+    margin: 0;
+}
+
+.box {
+    background-color: #f0f0f0; 
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    cursor: pointer; 
+}
+/*This is for when the user hovers over the box */
+.box:hover {
+    background-color: #87ceeb; 
+    transform: scale(1.05);
+    cursor: pointer; 
+}
+/*This is for the task bar at the top of the screen*/
+.icon-container {
+    display: flex;
+    gap: 20px;
+ 
+}
+.icon-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    transform: transform 0.3s ease;
+}
+/* This class is for the stylising of the task bar making sure they are aligned  horizontally*/
+.header{
+    position: absolute;
+    top:0px;
+    right:0px;
+    width:25%; 
+    height:10%;
+    display: flex;
+    gap:20px;
+}
+/*These classes are for the icons and text themselves*/
+.icon-container i{
+    font-size: 24px;
+    color: black;
+}
+.icon-container p {
+    font-size: 12px;
+    margin: 5px 0 0 0;
+}
+.icon-container :hover{
+    transform :scale(1,1);
+}
+.icon-container :hover{
+    color: aliceblue;
+}
