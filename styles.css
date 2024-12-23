@@ -10,7 +10,7 @@
 /*Background of the entire website is initialised*/
 html, body {
     height: 100%;
-    background-color: rgba(0, 150, 255, 1);
+    background-color: rgba(203, 249, 246, 0.8);
 }
 
 /* Header */

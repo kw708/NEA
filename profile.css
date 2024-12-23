@@ -2,7 +2,7 @@ body{
     margin:0;
     padding:0;
     font-family: "IBM Plex Serif", serif;
-    background-color: rgba( 0, 150 ,255 ,1 );
+    background-color:  rgba(203, 249, 246, 0.8);
 }
 nav img {
     display: block; 
