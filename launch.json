@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations":[
+        {
+            "name":"Python: Flask",
+            "type":"python",
+            "request":"launch",
+            "program": "${workspaceFolder}/app.py",
+            "env": {
+                "SECRET_KEY": "your_secret_key",
+                "MAIL_USERNAME": "your_email@example.com",
+                "MAIL_PASSWORD": "your_password"
+            }
+        }
+    ]
+}
