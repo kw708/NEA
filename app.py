@@ -10,19 +10,20 @@ import os
 app = Flask(__name__)
 
 # App Configurations
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY','default_secret_key')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+#app.config['SECRET_KEY'] = os.getenv('SECRET_KEY','default_secret_key')
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] =  'sqlite:///' + os.path.join(basedir, 'users.db') #'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Email Configuration
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+#app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+#app.config['MAIL_PORT'] = 587
+#app.config['MAIL_USE_TLS'] = True
+#app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+#app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 
 db = SQLAlchemy(app)
-mail = Mail(app)
+#mail = Mail(app)
 
 # User Model
 class User(db.Model):
@@ -30,7 +31,7 @@ class User(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
-    verified = db.Column(db.Boolean, default=False)
+     verified = db.Column(db.Boolean, default=False)
 
 # Home Route
 @app.route('/')
