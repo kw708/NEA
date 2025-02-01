@@ -1,49 +1,51 @@
 <!DOCTYPE html>
-<html> 
-    <head>
-        <meta name = "viewport" content = "width = device -width, initial-scale = 1.0 ">
-        <title>Psychology Course Page </title>
-        <link rel = "stylesheet" href = "history.css">
-        <script src="https://kit.fontawesome.com/2cdfb815df.js" crossorigin="anonymous"></script>
-    </head>   
+<html>
 
-    <body>
-        <nav>
-            <a href="index.html"><img src="images/logo transparent.png" alt="Logo"></a>
-            <button onclick ="goToCourses()">Back to courses</button>
-        </nav>
-<!-- Header detailing the subject and the specification available-->
-        <div class = "header-container">
-            <h1>History</h1>
-            <p> Specification - OCR </p>
-        </div>
-<!--search bar -->
-        <div class ="search-container">
-            <div class = "search-bar">
-                <div id = "select">
-                    <p> All Topics</p>
-                    <i class="fa-solid fa-caret-down"></i>
-                    <ul  id="list">
-                        <li class ="options">All Topics</li>
-                        <li class ="options">Recent</li>
-                        <li class ="options">Popular</li>
-                    </ul>
-                </div>
-                <input type = "text" placeholder="Enter a Topic">
+<head>
+    <meta name="viewport" content="width = device -width, initial-scale = 1.0 ">
+    <title>Psychology Course Page </title>
+    <link rel="stylesheet" href="css/history.css">
+    <script src="https://kit.fontawesome.com/2cdfb815df.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src="media/images/logo transparent.png" alt="Logo"></a>
+        <button onclick="goToCourses()">Back to courses</button>
+    </nav>
+    <!-- Header detailing the subject and the specification available-->
+    <div class="header-container">
+        <h1>History</h1>
+        <p> Specification - OCR </p>
+    </div>
+    <!--search bar -->
+    <div class="search-container">
+        <div class="search-bar">
+            <div id="select">
+                <p> All Topics</p>
+                <i class="fa-solid fa-caret-down"></i>
+                <ul id="list">
+                    <li class="options">All Topics</li>
+                    <li class="options">Recent</li>
+                    <li class="options">Popular</li>
+                </ul>
             </div>
+            <input type="text" placeholder="Enter a Topic">
         </div>
-<!--Java to allow the user to filter -->
+    </div>
+    <!--Java to allow the user to filter -->
     <script>
         let select = document.getElementById("select");
         let list = document.getElementById("list");
 
-        select.onclick = function(){
+        select.onclick = function () {
             list.classList.toggle("open");
         }
-        function goToCourses(){
+        function goToCourses() {
             window.location.href = "Courses.html";
         }
     </script>
-    
-    </body>
+
+</body>
+
 </html>
