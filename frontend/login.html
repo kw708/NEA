@@ -1,0 +1,81 @@
+<!-- Html document for the login and sign up-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale =1.0">
+    <title>Login/ Sign Up</title>
+    <link rel="stylesheet" href="css/stylelogin.css">
+    <script src="https://kit.fontawesome.com/2cdfb815df.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!---this creates a box for the area-->
+    <div class="container">
+        <!-- This is to add the logo to the corner of the screen -->
+        <nav>
+            <a href="index.html"><img src="media/images/logo transparent.png" alt="Logo"></a>
+        </nav>
+        <button onclick="goToindex()">Back to Home</button>
+        <div class="form-box">
+            <h1 id="title">Sign Up</h1>
+            <!--This creates separate boxes for the name, email, password and includes the icons-->
+            <form action="/signup" method="POST">
+                <div class="input-field" id="nameField">
+                    <i class="fa-regular fa user"></i>
+                    <input type="text" name="name" placeholder="Name" required>
+                </div>
+                <div class="input-field">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-field">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <p> Lost Password <a href="#"> Click Here!</a></p>
+                <!--- </div>
+             <!-This creates buttons for the user toc move between login and sign up-->
+                <div class="btn-field">
+                    <button type="button" id="signupBtn">Sign Up</button>
+                    <button type="button" id="loginBtn" class="disable">Login</button>
+                </div>
+
+
+
+            </form>
+        </div>
+
+
+    </div>
+    <!--This java script adds functionality to the area and gets rid of name when logging in-->
+    <script>
+        let signupBtn = document.getElementById("signupBtn");
+        let loginBtn = document.getElementById("loginBtn");
+        let nameField = document.getElementById("nameField");
+        let title = document.getElementById("title");
+
+        loginBtn.onclick = function () {
+            nameField.style.maxHeight = "0";
+            title.innerHTML = "Login";
+            signupBtn.classList.add("disable");
+            loginBtn.classList.remove("disable");
+            // this allows there to be a difference when the user moves between login and sign up//
+        }
+        signupBtn.onclick = function () {
+            nameField.style.maxHeight = "60px";
+            title.innerHTML = "Sign Up";
+            signupBtn.classList.remove("disable");
+            loginBtn.classList.add("disable");
+        }
+
+        function goToindex() {
+            window.location.href = "index.html";
+        }
+
+
+
+    </script>
+</body>
+
+</html>
