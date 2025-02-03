@@ -158,6 +158,7 @@ def not_found(error):
 def server_error(error):
     return jsonify({"error": "Internal server error"}), 500
 
+
+
 if __name__ == '__main__':
-    db.create_all()
     app.run(debug=True)
