@@ -1,37 +1,49 @@
 #integration 
-from flask import Flask, request, redirect, url_for, flash, render_template
-from flask_sqlalchemy import SQLAlchemy
-from flask_mail import Mail, Message
-from werkzeug.security import generate_password_hash, check_password_hash
-import random
-import string
 import os
+from flask import Flask, request, jsonify, session, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS
+from dotenv import load_dotenv
 
-app = Flask(__name__)
+#from flask import Flask, request, redirect, url_for, flash, render_template
+#from flask_mail import Mail, Message
+#from werkzeug.security import generate_password_hash, check_password_hash
+#import random
+#import string
+
+# Load environment variables
+load_dotenv()
 
 # App Configurations
-#app.config['SECRET_KEY'] = os.getenv('SECRET_KEY','default_secret_key')
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] =  'sqlite:///' + os.path.join(basedir, 'users.db') #'sqlite:///users.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] =  'sqlite:///' + os.path.join(basedir, 'users.db') #'sqlite:///users.db'
+
+# Initialize app
+app = Flask(__name__)
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL_PROTOCOL', 'sqlite:///') + os.path.join(basedir, os.getenv('DATABASE_URL_FILE_NAME'))
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Email Configuration
-#app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-#app.config['MAIL_PORT'] = 587
-#app.config['MAIL_USE_TLS'] = True
-#app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-#app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-
+# Initialize extensions
 db = SQLAlchemy(app)
-#mail = Mail(app)
+bcrypt = Bcrypt(app)
+CORS(app)
 
 # User Model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100), unique=True, nullable=False)
-    password = db.Column(db.String(200), nullable=False)
-     verified = db.Column(db.Boolean, default=False)
+    username = db.Column(db.String(50), unique=True, nullable=False) #user is default also email
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+
+    def __repr__(self):
+        return f'<User {self.username}>'
+
+# Create database tables
+with app.app_context():
+    db.create_all()
 
 # Home Route
 @app.route('/')
@@ -39,80 +51,112 @@ def home():
     render_template('index.html')
     
 
-# Sign-Up Route
+# Authentication Routes
 @app.route('/signup', methods=['POST'])
 def signup():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    password = request.form.get('password')
-
-#password length validation
-    if len(password) < 8 :
-        return "password is too short"
+    data = request.get_json()
     
+    # Validate input
+    if not data or not data.name.get('name') not data.get('username') or not data.get('email') or not data.get('password'):
+        return jsonify({"error": "Missing required fields"}), 400
+    
+    # Check if user already exists
+    existing_user = User.query.filter(
+        (User.username == data['username']) | (User.email == data['email'])
+    ).first()
+    
+    if existing_user:
+        return jsonify({"error": "Username or email already exists"}), 409
+    
+    # Hash password
+    hashed_password = bcrypt.generate_password_hash(data['password']).decode('utf-8')
+    
+    # Create new user
+    new_user = User(
+        username=data['username'],
+        email=data['email'],
+        password=hashed_password
+    )
+    
+    try:
+        db.session.add(new_user)
+        db.session.commit()
+        
+        # Create session for new user
+        session['user_id'] = new_user.id
+        
+        return jsonify({
+            "id": new_user.id,
+            "username": new_user.username,
+            "email": new_user.email
+        }), 201
+    
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": "Registration failed", "details": str(e)}), 500
 
-    # Hash the password for security
-    hashed_password = generate_password_hash(password, method='sha256')
 
-    # Save user to the database
-    user = User(name=name, email=email, password=hashed_password, verified=False)
-    db.session.add(user)
-    db.session.commit()
-
-    # Send a confirmation email
-    send_confirmation_email(email)
-
-    flash('Sign-up successful! A confirmation email has been sent to your email address.', 'success')
-    return redirect(url_for('home'))
-
-# Send Confirmation Email
-def send_confirmation_email(email):
-    token = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
-    confirmation_url = f'http://127.0.0.1:5501/confirm/{token}'
-
-    # Store token temporarily 
-    app.config['CONFIRMATION_TOKENS'] = {email: token}
-
-    msg = Message('Confirm Your Email', sender='your_email@gmail.com', recipients=[email])
-    msg.body = f'Click the link to confirm your email: {confirmation_url}'
-    mail.send(msg)
-
-# Email Confirmation Route
-@app.route('/confirm/<token>')
-def confirm_email(token):
-    confirmation_tokens = app.config.get('CONFIRMATION_TOKENS', {})
-    email = next((key for key, value in confirmation_tokens.items() if value == token), None)
-
-    if email:
-        user = User.query.filter_by(email=email).first()
-        if user:
-            user.verified = True
-            db.session.commit()
-            flash('Your email has been confirmed!', 'success')
-        else:
-            flash('User not found.')
-    else:
-        flash('Invalid or expired token.')
-
-    return redirect(url_for('home'))
-
-# Login Route
 @app.route('/login', methods=['POST'])
 def login():
-    email = request.form.get('email')
-    password = request.form.get('password')
+    data = request.get_json()
+    
+    # Validate input
+    if not data or not data.get('username') or not data.get('password'):
+        return jsonify({"error": "Missing username or password"}), 400
+    
+    # Find user
+    user = User.query.filter_by(username=data['username']).first()
+    
+    if user and bcrypt.check_password_hash(user.password, data['password']):
+        # Create session
+        session['user_id'] = user.id
+        
+        return jsonify({
+            "id": user.id,
+            "username": user.username,
+            "email": user.email
+        }), 200
+    
+    return jsonify({"error": "Invalid credentials"}), 401
 
-    user = User.query.filter_by(email=email).first()
+@app.route('/logout', methods=['POST'])
+def logout():
+    # Clear session
+    session.pop('user_id', None)
+    return jsonify({"message": "Logged out successfully"}), 200
 
-    if user and check_password_hash(user.password, password):
-        if user.verified:
-            flash('Login successful!', 'success')
-        else:
-            flash('Please confirm your email before logging in.', 'danger')
-    else:
-        flash('Invalid credentials.', 'danger')
+@app.route('/dashboard', methods=['GET'])
+def dashboard():
+    # Check if user is logged in
+    if 'user_id' not in session:
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    # Fetch user details
+    user = User.query.get(session['user_id'])
+    
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    return jsonify({
+        "id": user.id,
+        "username": user.username,
+        "email": user.email
+    }), 200
 
-    return redirect(url_for('home'))
+@app.route('/is_authenticated', methods=['GET'])
+def is_authenticated():
+    return jsonify({
+        "authenticated": 'user_id' in session
+    }), 200
+
+# Error Handlers
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({"error": "Not found"}), 404
+
+@app.errorhandler(500)
+def server_error(error):
+    return jsonify({"error": "Internal server error"}), 500
 
 if __name__ == '__main__':
     db.create_all()
