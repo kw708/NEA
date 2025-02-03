@@ -1,0 +1,75 @@
+# Sign-Up Route
+#@app.route('/signup', methods=['POST'])
+#def signup():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    #password length validation
+   if len(password) < 8 :
+        return "password is too short"
+    
+
+    # Hash the password for security
+    hashed_password = generate_password_hash(password, method='sha256')
+
+    # Save user to the database
+    user = User(name=name, email=email, password=hashed_password, verified=False)
+    db.session.add(user)
+    db.session.commit()
+
+    # Send a confirmation email
+    send_confirmation_email(email)
+
+    flash('Sign-up successful! A confirmation email has been sent to your email address.', 'success')
+    return redirect(url_for('home'))
+
+# Send Confirmation Email
+def send_confirmation_email(email):
+    token = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
+    confirmation_url = f'http://127.0.0.1:5501/confirm/{token}'
+
+    # Store token temporarily 
+    app.config['CONFIRMATION_TOKENS'] = {email: token}
+
+    msg = Message('Confirm Your Email', sender='your_email@gmail.com', recipients=[email])
+    msg.body = f'Click the link to confirm your email: {confirmation_url}'
+    mail.send(msg)
+
+# Email Confirmation Route
+@app.route('/confirm/<token>')
+def confirm_email(token):
+    confirmation_tokens = app.config.get('CONFIRMATION_TOKENS', {})
+    email = next((key for key, value in confirmation_tokens.items() if value == token), None)
+
+    if email:
+        user = User.query.filter_by(email=email).first()
+        if user:
+            user.verified = True
+            db.session.commit()
+            flash('Your email has been confirmed!', 'success')
+        else:
+            flash('User not found.')
+    else:
+        flash('Invalid or expired token.')
+
+    return redirect(url_for('home'))
+
+# Login Route
+@app.route('/login', methods=['POST'])
+def login():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = User.query.filter_by(email=email).first()
+
+    if user and check_password_hash(user.password, password):
+        if user.verified:
+            flash('Login successful!', 'success')
+        else:
+            flash('Please confirm your email before logging in.', 'danger')
+    else:
+        flash('Invalid credentials.', 'danger')
+
+    return redirect(url_for('home'))
+
