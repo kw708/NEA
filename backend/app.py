@@ -57,7 +57,7 @@ def signup():
     data = request.get_json()
     
     # Validate input
-    if not data or not data.name.get('name') not data.get('username') or not data.get('email') or not data.get('password'):
+    if not data or not data.name.get('name') or not data.get('username') or not data.get('email') or not data.get('password'):
         return jsonify({"error": "Missing required fields"}), 400
     
     # Check if user already exists
